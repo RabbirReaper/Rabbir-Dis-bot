@@ -1,18 +1,17 @@
 import { SlashCommandBuilder } from "discord.js";
 
-// const command = {
-// 	data: new SlashCommandBuilder()
-// 		.setName('ping')
-// 		.setDescription('Replies with Pong!'),
-// 	async execute(interaction) {
-// 		await interaction.reply('Pong!');
-// 	},
-// };  
-
 export const command = new SlashCommandBuilder()
     .setName('ping')
     .setDescription('ping connand')
+    .addStringOption(option => // 添加一個字符串選項
+        option
+        .setName('code')
+        .setDescription('Enter a code')
+        .setRequired(true))
+    
 
 export const action = async(interaction) =>{
-    interaction.reply('Pong!');
+    const code = interaction.options.getString('code');
+
+    await interaction.reply(`\`\`\`${code}\`\`\``); 
 }
