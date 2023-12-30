@@ -32,7 +32,8 @@ export const run = async (input, userId, message) => {
                     output = output.slice(0, 1000)
                     output += "\n...(輸出被截斷)..."
                 }
-                message.reply("```\n"+output+"```"+"```\n執行時間 : " + (endTime[1]/1e6).toFixed(0) +"豪秒```")
+                message.reply("```\n"+output+"```"+"```\n執行時間 : " + (endTime[0]*1000 + endTime[1]/1e6).toFixed(0) +"豪秒```")
+                // message.reply("```\n"+output+"```"+"```\n執行時間 : " + endTime[1] +"豪秒```")
             }
         });
 
