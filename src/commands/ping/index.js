@@ -3,7 +3,7 @@ import { SlashCommandBuilder } from "discord.js";
 export const command = new SlashCommandBuilder()
     .setName('ping')
     .setDescription('ping connand')
-    .addStringOption(option => // 添加一個字符串選項
+    .addStringOption(option => 
         option
         .setName('code')
         .setDescription('Enter a code')

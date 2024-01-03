@@ -4,13 +4,13 @@ export const run = async (input, userId, message) => {
     const dir = `userCodes\\${userId}.exe`;
 
     try {
-        const startTime = process.hrtime(); // 程式啟動時間
+        const startTime = process.hrtime(); // 程式開始時間
         const childProcess = spawn(dir);
         let isTimeout = false
         let output = "";
         const timeout = setTimeout(() => {
             isTimeout = true;
-            childProcess.kill(); // 終止子進程
+            childProcess.kill(); // 終止
         }, 1000);
 
         childProcess.stdout.on('data', (data) => {
@@ -44,32 +44,3 @@ export const run = async (input, userId, message) => {
         message.reply("```\n程式執行錯誤 !```");
     }
 };
-
-
-    // const childProcess = spawn(dir, [], { stdio: ['pipe', 'pipe', 'pipe'] });
-    // childProcess.stdin.write(input)
-    // childProcess.stdin.end()
-    // let outputData = ''; // 用於存儲輸出的數據
-    // let isTimeout = false;
-
-    // const timeout = setTimeout(() => {
-    //     isTimeout = true;
-    //     childProcess.kill(); // 終止子進程
-    // }, 1000);
-
-    // childProcess.stdout.on('data', (datas) => {
-    //     if (!isTimeout) {
-    //         outputData += datas; // 將輸出數據累加
-    //     }
-    // });
-
-    // childProcess.on('close', (code) => {
-    //     clearTimeout(timeout) // 清除計時器
-    //     if (code !== 0 && isTimeout) {
-    //         message.reply("TLE"); // 回覆 Discord 用戶 TLE
-    //     }else if(code === 0) {
-    //         message.reply(`\`\`\`${outputData.replace(/\s+/g, ' ').trim()}\`\`\``);
-    //     }else{
-    //         message.reply('SE');
-    //     }
-    // });
