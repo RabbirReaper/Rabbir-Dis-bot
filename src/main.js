@@ -23,8 +23,5 @@ appStore.client = client
 loadEvents()
 
 
-// client.once(Events.ClientReady, readyClient => {
-// 	console.log(`Ready! Logged in as ${readyClient.user.tag}`);
-// });
 
 client.login(process.env.Token);
