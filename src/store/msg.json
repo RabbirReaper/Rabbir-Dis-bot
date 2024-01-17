@@ -115,5 +115,9 @@
     "pword": [],
     "preposition": [],
     "set": "```// 跳躍法二分搜\n// 假設遞增值存於 p[]，在 p[s]~p[t]找到最後一個 < x 的位置\nk = s; // k 存目前位置, jump 是每次要往前跳的距離，逐步所減\nfor (jump = (t – s)/2; jump>0; jump /= 2) {\n    while (k+jump<t && p[k+jump]<x) // 還能往前跳就跳\n        k += jump;\n}\n-=-=-=-=-=-=-\nSTL函數必須在數組由小到大才可搜尋\n如果數組由大到小可以嘗試把數組都變成負的`\nlower_bound：找出vector中「大於或等於」val的「最小值」的位置：\n    auto it = lower_bound(v.begin(), v.end(), val);\n    auto it = lower_bound(v+0, v+n, val);//陣列\nupper_bound：找出vector中「大於」val的「最小值」的位置：\n    auto it = upper_bound(v.begin(), v.end(), val);\n    auto it = upper_bound(v+0, v+n, val);//陣列```",
-    "key": "new value"
+    "key": [
+        "new new value",
+        "new new value",
+        "1234123"
+    ]
 }

@@ -1,7 +1,8 @@
 import {Events} from 'discord.js'
 import fs from 'fs'
 import djson from '@/store/msg.json'
-import path from 'path'
+import { randomInt } from 'crypto'
+
 
 export const event = {
     name:Events.MessageCreate,
@@ -9,14 +10,12 @@ export const event = {
 }
 export const action = async(message) =>{
     if (message.author.bot) return;
-    // console.log(message.content)
+    
+    if(message.content.substring(message.content.length - 2) !== '運勢') return
 
     message.content = message.content.replace("<@1007521034515271742>","")//把一開始的tag 清除掉
-    const check  = './r'
+    
     message.content = message.content.trim()
-    if(message.content.substring(0,3) !== check) return
-    djson['key'].push(message.content.substring(3));
-
-    fs.writeFileSync("src\\store\\msg.json", JSON.stringify(djson));
-    await message.reply("OK")
+    const x = randomInt(djson.draw.length)
+    await message.reply(message.content+" "+djson.draw[x])
 }
