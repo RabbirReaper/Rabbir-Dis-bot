@@ -13,9 +13,8 @@ export const action = async(message) =>{
     
     if(message.content.substring(message.content.length - 2) !== '運勢') return
 
-    message.content = message.content.replace("<@1007521034515271742>","")//把一開始的tag 清除掉
-    
-    message.content = message.content.trim()
+    let modifiedContent = message.content.replace(/<@!?(\d+)>/g, '').trim();
+
     const x = randomInt(djson.draw.length)
-    await message.reply(message.content+" "+djson.draw[x])
+    await message.reply(modifiedContent+" "+djson.draw[x])
 }
